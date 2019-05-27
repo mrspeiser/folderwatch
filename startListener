@@ -1,0 +1,8 @@
+#!/bin/bash
+
+pipename="$1"
+if [[ -z "$1" ]];then
+	read -p "enter pipename to listen: " pipename
+fi
+
+./listener "$pipename" &

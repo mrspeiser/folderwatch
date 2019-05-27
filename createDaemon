@@ -1,0 +1,7 @@
+#!/bin/bash
+
+pipename="$1"
+if [[ -z $1 ]]; then
+	read -p "enter name of pipe file in current directory: " pipename
+fi
+inotifywait -d -e create "$(pwd)" -o "$(pwd)/.folderwatch/$pipename" --timefmt "%a, %d %b %Y %T %z" --format "%e,%f"

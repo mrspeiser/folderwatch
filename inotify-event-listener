@@ -1,0 +1,20 @@
+#!/bin/bash
+
+mkdir "$(pwd)/.folderwatch"
+
+fwdir="$(pwd)/.folderwatch"
+# echo "$fwdir"
+
+read -p "enter pipe name: " pipename
+mkfifo "$fwdir/$pipename"
+
+echo "starting inotify daemon"
+
+inotifywait -d -e create "$(pwd)" -o "$(pwd)/.folderwatch/$pipename" --timefmt "%a, %d %b %Y %T %z" --format "%e,%f"
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+# echo "$DIR"
+cp "$DIR/listener" "$fwdir/listener"
+cp "$DIR/event" "$fwdir/event"
+cp "$DIR/createDaemon" "$fwdir/createDaemon"

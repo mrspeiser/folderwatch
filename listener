@@ -1,0 +1,9 @@
+#!/bin/bash
+
+while read line < "$1"; do
+    if [[ -x "./event" ]]; then
+        eval "./event" "$line"
+    else
+        echo "EVENT NOT REGISTERED" >> err.txt
+    fi
+done
