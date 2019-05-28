@@ -5,7 +5,10 @@ mkdir "$(pwd)/.folderwatch"
 fwdir="$(pwd)/.folderwatch"
 # echo "$fwdir"
 
-read -p "enter pipe name: " pipename
+pipename="$1"
+if [[ -z "$1" ]]; then
+	read -p "enter pipe name: " pipename
+fi
 mkfifo "$fwdir/$pipename"
 
 echo "starting inotify daemon"
@@ -18,3 +21,6 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cp "$DIR/listener" "$fwdir/listener"
 cp "$DIR/event" "$fwdir/event"
 cp "$DIR/createDaemon" "$fwdir/createDaemon"
+cp "$DIR/startListener" "$fwdir/startListener"
+
+"$fwdir/startListener $pipename"
