@@ -22,5 +22,3 @@ cp "$DIR/listener" "$fwdir/listener"
 cp "$DIR/event" "$fwdir/event"
 cp "$DIR/createDaemon" "$fwdir/createDaemon"
 cp "$DIR/startListener" "$fwdir/startListener"
-
-"$fwdir/startListener $pipename"
