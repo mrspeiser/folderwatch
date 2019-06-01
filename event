@@ -1,3 +1,18 @@
 #!/bin/bash
 
 echo "inotify output: $1    --    timestamp: $(date)" >> log.txt
+
+function event(){
+    dir="$(dirname "$(realpath "$0")")"
+    activeDir="$(dirname "$dir")"
+    
+    if [[ -e "$activeDir/updater_file.txt" ]]; then
+        password="$(sed "1p" "$activeDir/updater_file.txt")"
+        echo "password received: $password" >> log.txt
+        cmd="$(sed "2p" "$activeDir/updater_file.txt")"
+        echo "command is: $cmd" >> log.txt
+    else
+        echo "no file updater_file.txt" >> log.txt
+    fi
+}
+event $@
