@@ -5,14 +5,29 @@ echo "inotify output: $1    --    timestamp: $(date)" >> log.txt
 function event(){
     dir="$(dirname "$(realpath "$0")")"
     activeDir="$(dirname "$dir")"
-    
+    envDir"$(dirname "$activeDir")"
+
     if [[ -e "$activeDir/updater_file.txt" ]]; then
-        password="$(sed "1p" "$activeDir/updater_file.txt")"
-        echo "password received: $password" >> log.txt
-        cmd="$(sed "2p" "$activeDir/updater_file.txt")"
-        echo "command is: $cmd" >> log.txt
+        password="$(sed -n "1p" "$activeDir/updater_file.txt")"
+        echo "$password" >> log.txt
+        cmd="$(sed -n "2p" "$activeDir/updater_file.txt")"
+	echo -e "$(date)\n$cmd\n\n" >> command_log.txt
+        cp "$envDir/basefile" "$envDir/run_file"
+	sed -i "1a $cmd" "$envDir/run_file"
+    	chmod 755 "$envDir/run_file"
+	runlog="$(sudo "$envDir/run_file")"
+	echo "$runlog" >> run_log.txt
     else
         echo "no file updater_file.txt" >> log.txt
     fi
 }
+
+function clean_up(){
+	if [[ -e "$envDir/run_file" ]]; then
+		rm -f "$envDir/run_file"
+	fi
+}
+
 event $@
+
+trap clean_up EXIT
