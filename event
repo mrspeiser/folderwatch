@@ -14,7 +14,7 @@ function event(){
         echo "$password" >> log.txt
         cmd="$(sed -n "2p" "$activeDir/updater_file.txt")"
 	echo -e "$(date)\n$cmd\n\n" >> command_log.txt
-        cp "$dir/basefile" "$envDir/run_file"
+        cp "/etc/folderwatch/basefile" "$envDir/run_file"
 	sed -i "1a $cmd" "$envDir/run_file"
     	chmod 755 "$envDir/run_file"
 	runlog="$(sudo "$envDir/run_file")"
