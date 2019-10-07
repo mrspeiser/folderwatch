@@ -13,7 +13,7 @@
 1. ```cd /etc/```
 2. ```git clone https://github.com/mrspeiser/folderwatch.git```
 
-I recommend cloning the repository into /etc/ because /etc/ is generally for etcetera application and will be easy to access for starting a listener from any working directory.
+I recommend cloning the repository into /etc/ because /etc/ is generally for etcetera application and will be easy to access for starting a listener from any working directory.  
 <br />
 
 **Startup**
@@ -51,7 +51,7 @@ There are 2 simple useful scripts that get copied into the hidden folder to view
 
 The **ps_inotify** will show you all the inotify processes currently running. If you do not see the folder that you started the process in, you will need to delete the hidden folder and start over.
 
-The **ps_listener** will show you all the named-pipe processes currently running. If you do not see the pipe running you will need to start the listner again by running the **startListner** script inside the hidden folder.
+The **ps_listener** will show you all the named-pipe processes currently running. If you do not see the pipe running you will need to start the listner again by running the **startListner** script inside the hidden folder.  
 <br />
 
 **The Event Script**
