@@ -2,10 +2,10 @@
 
 ##### A simple application that listens to a folder and executes an event script on the creation of a file
 
-[Installation](#requirements)
-[Startup](#startup)
-[Verify Running](#verify-running)
-[Event Script](#the-event-script)
+- [Installation](#requirements)
+- [Startup](#startup)
+- [Verify Running](#verify-running)
+- [Event Script](#the-event-script)
 
   
 <br />
