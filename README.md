@@ -21,8 +21,7 @@ I recommend cloning the repository into /etc/ because /etc/ is generally for etc
 2. Initialize the pipe and hidden directory for the output of the inotify tools:
   
 ```/etc/folderwatch/inotify-event-listener```
-  
-    * you can also pass the name of the pipe as the first argument, otherwise it will prompt you *
+   - You can also pass the name of the pipe as the first argument, otherwise it will prompt you 
 ```/etc/folderwatch/inotify-event-listener mypipename```
 
 3. Enter the hidden directory 
@@ -33,9 +32,9 @@ I recommend cloning the repository into /etc/ because /etc/ is generally for etc
   
 ```./startListener```
   
-    * you can also pass the pipename as the first parameter  
+   - You can also pass the pipename as the first parameter  
 ```./startListener pipename```
   
-    * additionally you can also manually start the listening process by executing the listner as a background process. startListner script is just a shortcut 
+   - Additionally you can also manually start the listening process by executing the listner as a background process. startListner script is just a shortcut 
 ```./listener "$pipename" &```
 
