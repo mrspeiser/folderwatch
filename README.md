@@ -29,11 +29,11 @@ I recommend cloning the repository into /etc/ because /etc/ is generally for etc
 
   ```cd /home/drop/myspecialfolder```
 
-2. Initialize the pipe and hidden directory for the output of the inotify tools:
+2. Create hidden directory, named pipe, copy neccessary specific files from /etc/folderwatch/ into hidden directory, then start an inotify process sending stdout to the named pipe.
   
 ```/etc/folderwatch/inotify-event-listener```
    - You can also pass the name of the pipe as the first argument, otherwise it will prompt you 
-```/etc/folderwatch/inotify-event-listener mypipename```
+```/etc/folderwatch/inotify-event-listener "mypipename"```
 
 3. Enter the hidden directory 
   
@@ -44,10 +44,10 @@ I recommend cloning the repository into /etc/ because /etc/ is generally for etc
 ```./startListener```
   
    - You can also pass the pipename as the first parameter  
-```./startListener pipename```
+```./startListener "mypipename"```
   
-   - Additionally you can also manually start the listening process by executing the listner as a background process. startListner script is just a shortcut 
-```./listener "$pipename" &```  
+   - Additionally you can also manually start the listening process by executing the listener as a background process. startListner script is just a shortcut 
+```./listener "mypipename" &```  
 <br />
 
 #### Verify Running
@@ -58,7 +58,7 @@ There are 2 simple useful scripts that get copied into the hidden folder to view
 
 The **ps_inotify** will show you all the inotify processes currently running. If you do not see the folder that you started the process in, you will need to delete the hidden folder and start over.
 
-The **ps_listener** will show you all the named-pipe processes currently running. If you do not see the pipe running you will need to start the listner again by running the **startListner** script inside the hidden folder.  
+The **ps_listener** will show you all the named-pipe processes currently running. If you do not see the pipe running you will need to start the listener again by running the **startListner** script inside the hidden folder.  
 <br />
 
 #### The Event Script
