@@ -1,4 +1,5 @@
 ## Folderwatch
+
 ##### A simple application that listens to a folder and executes an event script on the creation of a file
 
 **Requirements:**
@@ -37,4 +38,25 @@ I recommend cloning the repository into /etc/ because /etc/ is generally for etc
   
    - Additionally you can also manually start the listening process by executing the listner as a background process. startListner script is just a shortcut 
 ```./listener "$pipename" &```
+
+**Verifying Startup**
+
+There are 2 simple useful scripts that get copied into the hidden folder to view and filter processes:
+1. ps_inotify
+2. ps_listener
+
+The **ps_inotify** will show you all the inotify processes currently running. If you do not see the folder that you started the process in, you will need to delete the hidden folder and start over.
+
+The **ps_listener** will show you all the named-pipe processes currently running. If you do not see the pipe running you will need to start the listner again by running the **startListner** script inside the hidden folder.
+
+**The Event Script**
+
+The event script fires everytime the inotify-process outputs to the pipe. The pipe feeds that output into the event.
+
+The default behavior for the event script is to log the output from the inotify-process to the log.txt file inside the .folderwatch folder.
+
+** You _DO NOT_ need to stop the listener or any processes to modify this event script **
+
+The event script runs independently and only gets triggered when it reaceives input from the pipe.
+
 
