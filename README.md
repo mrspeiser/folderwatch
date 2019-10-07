@@ -2,16 +2,19 @@
 
 ##### A simple application that listens to a folder and executes an event script on the creation of a file
 
+
 **Requirements:**
 1. Linux system with bash
 2. inotify-tools
 ```apt-get -y install inotify-tools```
+
 
 **Installation**
 1. ```cd /etc/```
 2. ```git clone https://github.com/mrspeiser/folderwatch.git```
 
 I recommend cloning the repository into /etc/ because /etc/ is generally for etcetera application and will be easy to access for starting a listener from any working directory.
+
 
 **Startup**
 
@@ -39,7 +42,8 @@ I recommend cloning the repository into /etc/ because /etc/ is generally for etc
    - Additionally you can also manually start the listening process by executing the listner as a background process. startListner script is just a shortcut 
 ```./listener "$pipename" &```
 
-**Verifying Startup**
+
+**Verifying Startup/Running**
 
 There are 2 simple useful scripts that get copied into the hidden folder to view and filter processes:
 1. ps_inotify
@@ -49,14 +53,17 @@ The **ps_inotify** will show you all the inotify processes currently running. If
 
 The **ps_listener** will show you all the named-pipe processes currently running. If you do not see the pipe running you will need to start the listner again by running the **startListner** script inside the hidden folder.
 
+
 **The Event Script**
 
 The event script fires everytime the inotify-process outputs to the pipe. The pipe feeds that output into the event.
 
 The default behavior for the event script is to log the output from the inotify-process to the log.txt file inside the .folderwatch folder.
 
-** You _DO NOT_ need to stop the listener or any processes to modify this event script **
+The output to the log will look something like this: 
+inotify output: CREATE,THIS-FILE-WAS-JUST-CREATED.txt    --    timestamp: Fri Apr  5 19:15:22 UTC 2019
 
-The event script runs independently and only gets triggered when it reaceives input from the pipe.
+** You _DO NOT_ need to stop the listener or any processes to modify the event script **
 
+The event script runs independently and only gets triggered when it receives input from the pipe.
 
