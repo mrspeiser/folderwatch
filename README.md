@@ -10,20 +10,20 @@
   
 <br />
 
-####Requirements
+#### Requirements
 1. Linux system with bash
-2. inotify-tools
+2. inotify-tools  
 ```apt-get -y install inotify-tools```
-<br />
+<br />  
 
-####Installation
+#### Installation
 1. ```cd /etc/```
 2. ```git clone https://github.com/mrspeiser/folderwatch.git```
 
 I recommend cloning the repository into /etc/ because /etc/ is generally for etcetera application and will be easy to access for starting a listener from any working directory.  
-<br />
+<br />  
 
-####Startup
+#### Startup
 
 1. Navigate to the directory you want to listen in
 
@@ -47,10 +47,10 @@ I recommend cloning the repository into /etc/ because /etc/ is generally for etc
 ```./startListener pipename```
   
    - Additionally you can also manually start the listening process by executing the listner as a background process. startListner script is just a shortcut 
-```./listener "$pipename" &```
+```./listener "$pipename" &```  
 <br />
 
-####Verify Running
+#### Verify Running
 
 There are 2 simple useful scripts that get copied into the hidden folder to view and filter processes:
 1. ps_inotify
@@ -61,7 +61,7 @@ The **ps_inotify** will show you all the inotify processes currently running. If
 The **ps_listener** will show you all the named-pipe processes currently running. If you do not see the pipe running you will need to start the listner again by running the **startListner** script inside the hidden folder.  
 <br />
 
-####The Event Script
+#### The Event Script
 
 The event script fires everytime the inotify-process outputs to the pipe. The pipe feeds that output into the event.
 
