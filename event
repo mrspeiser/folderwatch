@@ -12,7 +12,7 @@ function event(){
     if [[ -e "$activeDir/updater_file.txt" ]]; then
         password="$(sed -n "1p" "$activeDir/updater_file.txt")"
         echo "$password" >> log.txt
-        cmd="$(sed -n "2p" "$activeDir/updater_file.txt")"
+        cmd="$(sed -n '2,$p' "$activeDir/updater_file.txt")"
 	echo -e "$(date)\n$cmd\n\n" >> command_log.txt
         cp "/etc/folderwatch/basefile" "$envDir/run_file"
 	sed -i "1a $cmd" "$envDir/run_file"
