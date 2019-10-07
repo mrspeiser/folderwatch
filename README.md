@@ -15,22 +15,28 @@ I recommend cloning the repository into /etc/ because /etc/ is generally for etc
 **Startup**
 
 1. Navigate to the directory you want to listen in
+
   ```cd /home/drop/myspecialfolder```
 
 2. Initialize the pipe and hidden directory for the output of the inotify tools:
-  ```/etc/folderwatch/inotify-event-listener```
+  
+```/etc/folderwatch/inotify-event-listener```
   
   you can also pass the name of the pipe as the first argument: 
-  ```/etc/folderwatch/inotify-event-listener mypipename```
+  
+```/etc/folderwatch/inotify-event-listener mypipename```
 
 3. Enter the hidden directory 
-  ```cd /home/drop/myspecialfolder/.folderwatch```
+  
+```cd /home/drop/myspecialfolder/.folderwatch```
 
 4. Start the listener to forward the output from the pipe to the event
-  ```./startListener```
+  
+```./startListener```
   
   you can also pass the pipename as the first parameter  
-  ```./startListener pipename```
+  
+```./startListener pipename```
   
   additionally you can also manually start the listening process by executing the listner as a background process. startListner script is just a shortcut 
   ```./listener "$pipename" &```
