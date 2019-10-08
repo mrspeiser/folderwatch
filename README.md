@@ -76,6 +76,7 @@ inotify output: CREATE,THIS-FILE-WAS-JUST-CREATED.txt    --    timestamp: Fri Ap
 You can see the above output as the default action inside the event script.
 
 You _DO NOT_ need to stop the listener or any processes to modify the event script. The event script runs independently and only gets triggered when it receives input from the pipe.
+<br />  
 
 #### Stopping Processes
 
@@ -84,6 +85,7 @@ There is no script to automatically kill an inotify daemon or a folderwatch list
 To kill a inotify daemon use the **ps_inotify** script to first identify the process id which is the first column and type ```kill 12483``` where 12483 is the process id.
 
 To kill a folderwatch listener use the **ps_listener** to first identify the process id for the listener you want to kill. Then type ```kill 12488``` where 12488 is the process id.
+<br />  
 
 #### Expandability
 
