@@ -31,7 +31,7 @@ I recommend cloning the repository into /etc/ because /etc/ is generally for etc
 
   ```cd /home/drop/myspecialfolder```
 
-2. Create hidden directory, named pipe, copy neccessary specific files from /etc/folderwatch/ into hidden directory, then start an inotify daemon that sends stdout to the named pipe.
+2. Run this command which creates a hidden directory, named pipe, and then copies neccessary specific files from /etc/folderwatch/ into hidden directory. Then it starts an inotify daemon that sends stdout to the named pipe.
   
 ```/etc/folderwatch/inotify-event-listener```
    - You can also pass the name of the pipe as the first argument, otherwise it will prompt you 
